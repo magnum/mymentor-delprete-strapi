@@ -1,0 +1,25 @@
+version: "3"
+services:
+  strapi:
+    container_name: strapi
+    image: linoproject/mystrapi:1.1
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      JWT_SECRET: ${JWT_SECRET}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      NODE_ENV: ${NODE_ENV}
+    volumes:
+      - ./app/.tmp/:/opt/app/.tmp
+      - ./app/src/api/:/opt/app/src/api
+      - ./app/media/upload/:/opt/app/media/upload/
+    ports:
+      - "1337:1337"
+    networks:
+      - strapi
+    
+
+networks:
+  strapi:
+    name: Strapi
+    driver: bridge
