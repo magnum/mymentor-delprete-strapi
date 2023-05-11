@@ -3,6 +3,7 @@ services:
   strapi:
     container_name: strapi
     #image: linoproject/mystrapi:1.1
+    image: amolinari/mymentor-delprete-strapi
     build:
       context: ./app
       dockerfile: Dockerfile
